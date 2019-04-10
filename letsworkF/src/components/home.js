@@ -8,7 +8,9 @@ class Home extends Component {
     return (
       <HashRouter>
         <>
+     
       <VideoHero/>
+      
       </>
       </HashRouter>
       
