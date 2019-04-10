@@ -3,7 +3,7 @@ import { HashRouter, Route} from 'react-router-dom';
 import Header from './components/header';
 // import Home from './components/home';
 import Login from './containers/login';
-// import SignUp from './containers/SignUp';
+import SignUp from './containers/signup';
 // import UserProfile from './components/userprofile';
 // import SearchPage from './components/searchpage';
 // import Logout from './containers/logout';
@@ -43,7 +43,7 @@ class App extends Component {
       <HashRouter>
         <>
       <Header/>
-        {/* <Route path='/signup' exact component={SignUp}/>  */}
+        <Route path='/signup' exact component={SignUp}/> 
         {/* <Route path='/' exact component={Home}/> */}
         <Route path='/login' exact component={Login}/>
         {/* <Route path='/containers/logout' exact component={Logout}/> */}
