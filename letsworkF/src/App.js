@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter, Route} from 'react-router-dom';
 import Header from './components/header';
 // import Home from './components/home';
-// import Login from './containers/login';
+import Login from './containers/login';
 // import SignUp from './containers/SignUp';
 // import UserProfile from './components/userprofile';
 // import SearchPage from './components/searchpage';
@@ -43,12 +43,12 @@ class App extends Component {
       <HashRouter>
         <>
       <Header/>
-        {/* <Route path='/signup' exact component={SignUp}/> 
-        <Route path='/' exact component={Home}/>
+        {/* <Route path='/signup' exact component={SignUp}/>  */}
+        {/* <Route path='/' exact component={Home}/> */}
         <Route path='/login' exact component={Login}/>
-        <Route path='/containers/logout' exact component={Logout}/>
-        <Route path='/userprofile' exact component={UserProfile}/>
-        <Route path='/searchpage' exact component={SearchPage}/> */}
+        {/* <Route path='/containers/logout' exact component={Logout}/> */}
+        {/* <Route path='/userprofile' exact component={UserProfile}/> */}
+        {/* <Route path='/searchpage' exact component={SearchPage}/> */}
       
       </>
       </HashRouter>
