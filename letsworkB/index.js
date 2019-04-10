@@ -38,7 +38,22 @@ app.post('/unprotected', (req, res) => {
 app.post('/protected', checkFirebaseToken, (req, res) => {
   res.json(`This is some sensitive data`);
 })
+// // parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
+// // parse application/json
+// app.use(bodyParser.json())
+
+// // users routes
+// app.use('/users', usersRouter);
+// // app.use('/posts', postsRouter);
+// // app.use('/comments', commentsRouter);
+
+
+// app.use((err, req, res, next) => {
+//   res.status(400).json({error: err.toString()});
+// });
 
 app.listen(port, () => {
-  console.log('Server listening on port: '+port);
-})
+  console.log('API is running on Port: '+port);
+});
+
