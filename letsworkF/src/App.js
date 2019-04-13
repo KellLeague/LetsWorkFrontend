@@ -1,41 +1,14 @@
 import React, { Component } from 'react';
 import { HashRouter, Route} from 'react-router-dom';
 import Header from './components/header';
-import Home from './components/home';
+import Home from './containers/home';
 import Login from './containers/login';
 import SignUp from './containers/signup';
 import UserProfile from './components/userprofile';
-// import SearchPage from './components/searchpage';
+import SearchPage from './components/searchpage';
 import Logout from './containers/logout';
 
-// import Userprofile from './components/userprofile'
-// import userprofile from './components/userprofile';
-// import HomeSignup from './components/homesignup';
-// import HomeLogin from './components/homelogin';
 
-// import EmailInput from './components/email';
-// import SignUp from './components/SignUp';
-// import SearchBar from './components/search';
-
-// const Home = (props) => {
-//   return(
-//     <>
-//     <h1>HOMEPAGE</h1>
-//     <Link to='/Homepage'>HOMEPAGE</Link>
-    
-//     </>
-//   )
-// }
-
-// const LoginLink = (props) => {
-//   return(
-//     <>
-//     <h1>Login</h1>
-//     <Link to='/Login'>LOGIN</Link>
-//     <button type="button" class="btn btn-info btn-lg btn-block">LOGIN</button>
-//     </>
-//   )
-// }
 
 class App extends Component {
   render() {

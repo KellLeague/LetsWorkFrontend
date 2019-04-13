@@ -29,7 +29,7 @@ class Header extends Component {
           <Link className='nav-link' to='/SignUp' >SignUp</Link>
           <Link className='nav-link' to='/login' >Login</Link>
           <Link className='nav-link' to='/logout' >LogOut</Link>
-          <div class="shadow-lg p-3 mb-5 bg-white rounded"></div>
+          <div className="shadow-lg p-3 mb-5 bg-white rounded"></div>
           </div>
           
 

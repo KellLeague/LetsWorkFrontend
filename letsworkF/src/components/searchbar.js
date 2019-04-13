@@ -1,12 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Axios from 'axios'
+import firebase from '../firebase';
+
 
 
 class SearchBar extends React.Component {
   state = {
-      searchResults: {}
+      searchResults: ''
   }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  
   fetchData = (query) => {
     Axios({
         method: 'get',
@@ -26,6 +34,21 @@ class SearchBar extends React.Component {
       })
 
 }
+
+handleSubmit = (e) => {
+  e.preventDefault();
+
+  const { searchResults } = this.state;
+  firebase.auth().signInWithEmailAndPassword(searchResults)
+    .then((response) => {
+      console.log('Returns: ', response);
+    })
+    .catch(err => {
+      const { message } = err;
+      this.setState({ error: message });
+    })
+}
+
   render(){
       return(
         <>

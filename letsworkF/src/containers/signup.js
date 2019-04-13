@@ -8,7 +8,8 @@ class SignUp extends React.Component {
   state = {
     email: '',
     password: '',
-    error: ''
+    error: '',
+    username: ''
   }
 
   handleChange = (e) => {
@@ -18,8 +19,8 @@ class SignUp extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { email, password } = this.state;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    const { email, password, username } = this.state;
+    firebase.auth().createUserWithEmailAndPassword(email, password,username)
       .then((response) => {
         console.log('Returns: ', response);
       })
@@ -46,7 +47,8 @@ componentWillMount() {}
 
 
   render() {
-    const { email, password, error } = this.state;
+    console.log(this.state)
+    const { email, password, error,username } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
 
     return (
@@ -63,11 +65,15 @@ componentWillMount() {}
             <label htmlFor="exampleInputPassword1">Password</label>
             <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
           </div>
+          <div className="form-group">
+            <label htmlFor="exampleInputUsername">Username</label>
+            <input type="username" className="form-control" placeholder="Username" value={username} name="username" onChange={this.handleChange} />
+          </div>
           {/* <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button> */}
         </form>
         <form>
             <div class='container' >
-            <button type="submit" class="btn btn-info btn-lg btn-block" onClick={this.handleSubmit}>
+            <button type="submit" className="btn btn-info btn-lg btn-block" onClick={this.handleSubmit}>
                 <Link to='/userprofile'>SignUp</Link>
             </button>
             </div>

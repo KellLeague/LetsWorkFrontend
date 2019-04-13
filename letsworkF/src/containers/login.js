@@ -1,8 +1,5 @@
 import React from 'react';
 import firebase from '../firebase';
-import { Link } from 'react-router-dom';
-// import UserProfile from '../components/userprofile';
-import axios from 'axios'
 
 export default class Login extends React.Component {
 
@@ -10,7 +7,7 @@ export default class Login extends React.Component {
     email: '',
     password: '',
     error: '',
-    user: {}
+    username:''
   }
 
   handleChange = (e) => {
@@ -20,8 +17,8 @@ export default class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { email, password } = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    const { email, password ,username} = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password,username)
       .then((response) => {
         console.log('Returns: ', response);
       })
@@ -29,7 +26,6 @@ export default class Login extends React.Component {
         const { message } = err;
         this.setState({ error: message });
       })
-
   }
 
   componentDidMount() {
@@ -42,24 +38,6 @@ export default class Login extends React.Component {
         // ..... The user is logged out
       }
     })
-    // this.matchUserByEmail()
-  }
-
-  matchUserByEmail = () => {
-    axios.get('/users/email')
-      .then(res => {
-        console.log('res',res)
-        this.setState({
-          user: {
-            user_email: res.data.email,
-            username: res.data.username
-
-          }
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
   }
 
   componentWillUnmount() {
@@ -67,29 +45,28 @@ export default class Login extends React.Component {
   }
 
   render() {
-    const { email, password, error, user} = this.state;
+    console.log(this.state)
+    const { email, password, error,username } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
 
     return (
       <>
-        <h1>Welcome Back Lets Work</h1>
+        <h1>Login</h1>
         {displayError}
         <form>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email Address</label>
+            <label htmlFor="exampleInputEmail1">Email</label>
             <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email" value={email} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
             <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
+          </div>  
+          <div className="form-group">
+            <label htmlFor="exampleInputUsername">Username</label>
+            <input type="username" className="form-control" placeholder="Username" value={username} name="username" onChange={this.handleChange} />
           </div>
-        </form>
-        <form>
-            <div class='container' >
-            <button type="submit" class="btn btn-info btn-lg btn-block" onClick={this.handleSubmit}>
-                <Link to='/userprofile:'>Lets Work</Link>
-            </button>
-            </div>
+          <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button>
         </form>
       </>
     )
